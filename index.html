@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G Dental Clinic — Стоматология в Анапе</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c7be5;
+            --primary-dark: #1a68d1;
+            --bg-light: #ffffff;
+            --text-main: #1a1a1a;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {box-sizing: border-box; margin: 0; padding: 0;}
+        body {font-family: 'Ubuntu', sans-serif; background: var(--bg-light); color: var(--text-main); line-height: 1.6;}
+        .container {max-width: 1200px; margin: auto; padding: 0 20px;}
+        
+        header {
+            position: fixed; top: 0; width: 100%; 
+            background: rgba(255, 255, 255, 0.98); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+            z-index: 1000;
+        }
+        .nav {display: flex; justify-content: space-between; align-items: center; height: 80px;}
+        /* Новый стиль текстового логотипа */
+/* Эстетичный и миниатюрный текстовый логотип */
+.logo-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    line-height: 1; /* Убираем лишние отступы между строками */
+    transition: var(--transition);
+    padding: 5px 0; /* Немного отступа сверху и снизу */
+}
+
+.logo-text {
+    font-size: 19px; /* Уменьшили размер */
+    font-weight: 500; /* Сделали шрифт чуть тоньше (был 700) */
+    color: var(--primary);
+    letter-spacing: 2.5px; /* Увеличили разрядку для "дорогого" вида */
+    text-transform: uppercase; /* Все буквы заглавные */
+}
+
+.logo-subtext {
+    font-size: 9px; /* Совсем миниатюрный */
+    font-weight: 400;
+    color: #777; /* Сделали цвет мягче */
+    letter-spacing: 5px; /* Сильная разрядка */
+    margin-top: 3px; /* Отступ от основного текста */
+    text-transform: uppercase;
+}
+
+.logo-icon {
+    width: 16px; /* Уменьшили иконку */
+    height: 16px;
+    color: var(--primary);
+    margin-top: 6px; /* Отступ от текста */
+    opacity: 0.7; /* Сделали её полупрозрачной в обычном состоянии */
+    transition: var(--transition);
+}
+
+/* Эффект при наведении */
+.logo-box:hover .logo-text {
+    color: var(--primary-dark);
+}
+
+.logo-box:hover .logo-icon {
+    opacity: 1; /* При наведении иконка становится яркой */
+    transform: scale(1.15); /* Мягкое увеличение */
+}
+
+/* Эффект при наведении на всю область логотипа */
+.logo-box:hover {
+    transform: translateY(-2px);
+}
+
+.logo-box:hover .logo-icon {
+    transform: rotate(15deg) scale(1.2);
+}
+.modal-content p {
+    line-height: 1.5;
+    color: #444;
+}
+
+
+        
+        nav a {
+            text-decoration: none; margin-left: 25px; color: #333; 
+            font-weight: 500; transition: var(--transition); font-size: 15px;
+            position: relative; padding-bottom: 5px;
+        }
+        nav a::after {
+            content: ''; position: absolute; width: 0; height: 2px; 
+            bottom: 0; left: 0; background-color: var(--primary); 
+            transition: var(--transition);
+        }
+        nav a:hover { color: var(--primary); }
+        nav a:hover::after { width: 100%; }
+
+        .hero {
+            padding-top: 180px; padding-bottom: 100px; text-align: center;
+            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                        url('https://avatars.mds.yandex.net/get-altay/5457654/2a0000017f85af48c8ed79bd12ac13523a38/XXXL') center/cover no-repeat;
+        }
+        .hero h1 {font-size: 48px; margin-bottom: 15px; color: #000;}
+
+        .btn {
+            display: inline-block; padding: 14px 28px; border-radius: 30px; 
+            text-decoration: none; font-weight: 600; margin: 8px; 
+            transition: var(--transition); cursor: pointer; border: none;
+        }
+        .btn-primary {background: var(--primary); color: white;}
+        .btn-primary:hover {transform: translateY(-3px); box-shadow: 0 10px 20px rgba(44,123,229,0.3);}
+        .btn-outline {border: 2px solid var(--primary); color: var(--primary); background: transparent;}
+        .btn-outline:hover {background: var(--primary); color: white;}
+
+        section {padding: 80px 0;}
+        .section-title {text-align: center; font-size: 34px; margin-bottom: 50px;}
+
+        .card-anim {
+            background: white; border: 1px solid #e6eef6; 
+            border-radius: 16px; transition: var(--transition);
+            cursor: pointer;
+        }
+        .card-anim:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: var(--primary);
+        }
+
+        .about-text { max-width: 800px; margin: auto; text-align: center; font-size: 18px; color: #555; }
+
+        .services-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;}
+        .service-card {padding: 30px; text-align: center;}
+        .service-card h3 {margin-bottom: 15px; color: var(--primary);}
+
+        .gallery-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;}
+        .gallery-item { height: 200px; overflow: hidden; border-radius: 15px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); cursor: zoom-in; }
+        .gallery-item:hover img { transform: scale(1.1); }
+
+        .reviews {display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;}
+        .review {padding: 30px;}
+        .stars {color: #ffc107; margin-bottom: 10px;}
+        
+        .yandex-link-box { text-align: center; margin-top: 40px; }
+        .yandex-link {
+            font-size: 18px; font-weight: 500; color: var(--primary);
+            text-decoration: none; border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+        .yandex-link:hover { border-bottom: 2px solid var(--primary); color: var(--primary-dark); }
+
+        .booking-box {
+            background: white; padding: 40px; border-radius: 20px; 
+            max-width: 600px; margin: auto; border: 1px solid #e6eef6;
+        }
+        .form input, .form select {
+            width: 100%; padding: 15px; margin-bottom: 15px; 
+            border: 1px solid #dce6f2; border-radius: 10px; font-size: 16px;
+        }
+
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); display: none; 
+            justify-content: center; align-items: center; z-index: 2000;
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background: white; padding: 40px; border-radius: 20px;
+            max-width: 500px; width: 90%; position: relative;
+            animation: modalFade 0.3s ease;
+        }
+        @keyframes modalFade { from {transform: scale(0.85); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #999; }
+
+        .schedule-box {
+            display: none; max-width: 320px; margin: 20px auto 0;
+            background: white; padding: 20px 25px; border-radius: 15px;
+            border: 1px solid #e6eef6; box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+            text-align: left; animation: fadeInSchedule 0.3s ease;
+        }
+        .schedule-box p {
+            display: flex; justify-content: space-between; margin-bottom: 10px;
+            font-size: 15px; border-bottom: 1px dashed #eee; padding-bottom: 5px;
+        }
+        .schedule-box p:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+        .schedule-box b { color: var(--primary); }
+        @keyframes fadeInSchedule { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer {background: #0e1a2b; color: white; padding: 40px 0; text-align: center;}
+        .call-btn {
+            position: fixed; bottom: 30px; right: 30px; 
+            background: var(--primary); color: white; 
+            padding: 15px 25px; border-radius: 50px; 
+            font-weight: 700; text-decoration: none; 
+            z-index: 999; box-shadow: 0 10px 25px rgba(44,123,229,0.4);
+            display: flex; align-items: center; gap: 10px; transition: var(--transition);
+        }
+        .call-btn:hover {transform: scale(1.1); background: var(--primary-dark);}
+
+        @media(max-width: 768px) {
+            .nav-links {display: none;}
+            .hero h1 {font-size: 32px;}
+        }
+        
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container nav">
+        <a href="#" class="logo-box">
+    <div class="logo-text">G DENTAL</div>
+    <div class="logo-subtext">CLINIC</div>
+    <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C10.5 2 9 3 8 4.5C7 6 7 8 8 9.5C8.5 10.5 9.5 11.5 10 12V16C10 17 11 18 12 18H12C13 18 14 17 14 16V12C14.5 11.5 15.5 10.5 16 9.5C17 8 17 6 16 4.5C15 3 13.5 2 12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 14H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+    </div>
+</a>
+        <nav class="nav-links">
+            <a href="#about">О клинике</a>
+            <a href="#services">Услуги</a>
+            <a href="#gallery">Галерея</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#booking">Запись</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>G Dental Clinic</h1>
+        <p>Современная стоматология в Анапе. <br>Ваша улыбка — наш приоритет.</p>
+        <div style="margin: 20px 0;">⭐ 5.0 — Нам доверяют сотни пациентов</div>
+        <a class="btn btn-primary" href="#booking">Записаться на прием</a>
+        <a class="btn btn-outline" href="tel:+79180522088">Позвонить</a>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <h2 class="section-title">О клинике</h2>
+        <p class="about-text">
+            G Dental Clinic — это современное пространство здоровья в Анапе. Мы используем высокоточное оборудование и международные стандарты лечения. Наши врачи постоянно повышают квалификацию, чтобы вы получали качественную помощь в комфортной и дружелюбной атмосфере.
+        </p>
+    </div>
+</section>
+
+<section id="services" style="background: white;">
+    <div class="container">
+        <h2 class="section-title">Наши услуги</h2>
+        <div class="services-grid">
+    <div class="card-anim service-card" onclick="openModal('Терапия', 'Лечение кариеса любой сложности, установка эстетичных пломб и лечение корневых каналов под микроскопом. Используем современные анестетики — никакой боли.', 'от 3 500 ₽')">
+        <h3>🦷 Терапия</h3>
+        <p>Безболезненное лечение кариеса и каналов.</p>
+    </div>
+    <div class="card-anim service-card" onclick="openModal('Гигиена', 'Профессиональная чистка AirFlow удаляет налет от кофе и сигарет, а ультразвук справляется с зубным камнем. В конце проводим фторирование для укрепления эмали.', 'от 4 500 ₽')">
+        <h3>✨ Гигиена</h3>
+        <p>Чистка AirFlow и укрепление эмали.</p>
+    </div>
+    <div class="card-anim service-card" onclick="openModal('Имплантация', 'Восстановление утраченных зубов с помощью премиальных систем имплантации. Пожизненная гарантия на материалы и идеальная эстетика вашей улыбки.', 'от 25 000 ₽')">
+        <h3>💎 Имплантация</h3>
+        <p>Восстановление зубов «под ключ». </p>
+    </div>
+    <div class="card-anim service-card" onclick="openModal('Ортодонтия', 'Исправление прикуса в любом возрасте. Предлагаем установку металлических, керамических брекет-систем или невидимых элайнеров.', 'от 40 000 ₽')">
+        <h3>📏 Ортодонтия</h3>
+        <p>Брекеты и элайнеры для любого возраста.</p>
+    </div>
+</div>
+    </div>
+</section>
+
+<section id="gallery">
+    <div class="container">
+        <h2 class="section-title">Наша галерея</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://avatars.mds.yandex.net/get-altay/4971637/2a0000017f859a9b8808ae4f8e61acee8e94/XXXL" alt="Интерьер"></div>
+            <div class="gallery-item"><img src="https://avatars.mds.yandex.net/get-altay/5457654/2a0000017f85af48c8ed79bd12ac13523a38/XXXL" alt="Оборудование"></div>
+            <div class="gallery-item"><img src="https://avatars.mds.yandex.net/get-altay/15401795/2a000001971fdebca31b30006a4713461f73/XXXL" alt="Кабинет"></div>
+            <div class="gallery-item"><img src="https://avatars.mds.yandex.net/get-altay/6334827/2a0000017f85998439638cb4bf4628bb28ce/XXXL" alt="Зал"></div>
+        </div>
+    </div>
+</section>
+
+<section id="reviews" style="background: #edf4ff;">
+    <div class="container">
+        <h2 class="section-title">Отзывы пациентов</h2>
+        <div class="reviews">
+            <div class="card-anim review">
+                <div class="stars">★★★★★</div>
+                <p><b>Мила Полянская:</b> "Ходили вырвать молочный зуб ребенку, всё прошло безболезненно. Спасибо Гегаму Вардановичу!"</p>
+            </div>
+            <div class="card-anim review">
+                <div class="stars">★★★★★</div>
+                <p><b>Яна Вербецкая:</b> "Лечила несколько пломб. Делают хорошо, цены приемлемые. Спасибо за честную работу!"</p>
+            </div>
+            <div class="card-anim review">
+                <div class="stars">★★★★★</div>
+                <p><b>Наталья Плоцкая:</b> "Врач осмотрел бесплатно и дал отличные рекомендации. Бюджетные цены на услуги!"</p>
+            </div>
+        </div>
+        
+        <div class="yandex-link-box">
+            <a href="https://yandex.ru/maps/1107/anapa/?azimuth=2.6708041000478744&ll=37.323157%2C44.878028&mode=poi&poi%5Bpoint%5D=37.323201%2C44.877910&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D191928431027&tab=reviews&tilt=0.8726646259971648&z=20.48" target="_blank" class="yandex-link">
+                Читать все отзывы на Яндекс Картах →
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="booking">
+    <div class="container">
+        <h2 class="section-title">Запись на прием</h2>
+        <div class="booking-box">
+            <form class="form" id="bookingForm">
+    <input type="text" name="name" placeholder="Ваше имя" required>
+    <input type="tel" name="phone" placeholder="Ваш телефон" required>
+
+    <select name="service" required>
+        <option value="Не выбрана">Выберите услугу</option>
+        <option value="Консультация">Консультация</option>
+        <option value="Лечение">Лечение</option>
+        <option value="Чистка">Чистка</option>
+    </select>
+
+    <input type="date" name="date" required>
+    <select name="time" id="timeInput" required>
+    <option value="">Выберите время</option>
+</select>
+    <button class="btn btn-primary" type="submit" style="width:100%;">
+        Записаться сейчас
+    </button>
+</form>
+        </div>
+    </div>
+</section>
+
+
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Контакты</h2>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <p>📍 Анапа, ул. Ленина, 136</p>
+            <p>📞 +7 (918) 052-20-88</p>
+            
+            <button class="btn btn-outline" 
+        onclick="const box = document.getElementById('scheduleBox'); box.style.display = (box.style.display === 'block') ? 'none' : 'block';" 
+        style="margin-top: 15px; padding: 10px 25px; font-size: 15px;">
+    🕒 Режим работы
+</button>
+            <div class="schedule-box" id="scheduleBox">
+                <p><span>Понедельник</span> <b>09:00–21:00</b></p>
+                <p><span>Вторник</span> <b>09:00–21:00</b></p>
+                <p><span>Среда</span> <b>09:00–21:00</b></p>
+                <p><span>Четверг</span> <b>09:00–21:00</b></p>
+                <p><span>Пятница</span> <b>09:00–21:00</b></p>
+                <p><span>Суббота</span> <b>09:00–18:00</b></p>
+                <p><span>Воскресенье</span> <b>10:00–18:00</b></p>
+            </div>
+        </div>
+        <iframe src="https://yandex.ru/map-widget/v1/?ll=37.322868%2C44.878150&z=17&pt=37.322868,44.878150,pm2rdm" width="100%" height="400" frameborder="0" style="border:0; border-radius: 20px;" allowfullscreen></iframe>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 G Dental Clinic — Стоматология Анапа</p>
+</footer>
+
+<a href="tel:+79180522088" class="call-btn">📞 Записаться</a>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <span class="close-modal" onclick="closeModal()">×</span>
+        <h2 id="modalTitle" style="color: var(--primary); margin-bottom: 15px;"></h2>
+        <p id="modalDescription"></p>
+        <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="closeModal()">Закрыть</button>
+    </div>
+</div>
+
+<script src="script.js?v=2"></script>
+
+</body>
+</html>
+
